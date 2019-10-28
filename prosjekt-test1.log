@@ -1,0 +1,72 @@
+
+                 *********************************************
+                 *                                           *
+                 *             A I M - S p i c e             *
+                 *                                           *
+                 *         Professional Version 2019.100           *
+                 *                                           *
+                 *********************************************
+
+	Date: Mon Oct 28 14:39:43 2019
+	Circuit File: C:\Users\Andrea\Desktop\IC prosjekt\prosjekt-test1.cir
+	Analysis: DC Transfer Curves
+
+**************************  Circuit Description  **************************
+
+     1:  IC prosjekt
+     2:  
+     3:  *.inlcude p18_model_card.inc
+     4:  
+     5:  .param EXPOSE = 0
+     6:  .param Cs = 1uF
+     7:  
+     8:  VDD vdd 0 dc 1.8v
+     9:  VSS a 0 dc 3v
+    10:  
+    11:  *MN1 DRAIN GATE SOURCE BULK NMOS WIDTH LENGTH 
+    12:  *MP1 SOURCE GATE DRAIN BULK PMOS WIDTH LENGTH
+    13:  
+    14:  M1 y a 0 0 NMOS 1.8u 0.18u
+    15:  M2 y a 0 0 NMOS 1.8u 0.18u
+    16:  M3 y a vdd vdd PMOS 1.8u 0.18u
+    17:  M4 y a vdd vdd PMOS 1.8u 0.18u
+    18:  .dc VSS 0 5 0.1
+
+***************************  Model Parameters  ****************************
+
+
+***************  Device Parameters (Only for .op analysis)  ***************
+
+
+
+**************************  Analysis Parameters  **************************
+
+	Source name #1 .. : VSS
+	Start value #1 .. : 0
+	End value #1 .... : 5
+	Increment value #1: 0.1
+
+
+
+**************  Options (Only those different from default)  **************
+
+
+
+***************************  Kernel Messages  *****************************
+
+Circuit: IC prosjekt
+
+Error: could not open include file p18_pmos_models.inc
+Error on line 14 : m1 y a 0 0 nmos 1.8u 0.18u
+ unable to find definition of model  - default assumed 
+
+Error on line 15 : m2 y a 0 0 nmos 1.8u 0.18u
+ unable to find definition of model  - default assumed 
+
+Error on line 16 : m3 y a vdd vdd pmos 1.8u 0.18u
+ unable to find definition of model  - default assumed 
+
+Error on line 17 : m4 y a vdd vdd pmos 1.8u 0.18u
+ unable to find definition of model  - default assumed 
+
+

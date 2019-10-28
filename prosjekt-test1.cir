@@ -1,0 +1,16 @@
+[aimspice]
+[description]
+134
+IC prosjekt
+.include 
+
+.param VDD = 5v
+.param VSS = -5v
+.param EXPOSE = 0
+.param Cs = 1uF
+
+M1 NMOS 
+M2 NMOS
+M3 PMOS
+M4 PMOS
+[end]
