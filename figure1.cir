@@ -1,0 +1,32 @@
+[aimspice]
+[description]
+677
+Analog circuit for project
+
+.include C:\Users\haral\OneDrive\NTNU\IC\Project\p18_cmos_models_tt.inc
+.include C:\Users\haral\OneDrive\NTNU\IC\Project\p18_model_card.inc
+
+.subckt PhotoDiode  VDD N1_R1C1 
+I1_R1C1  VDD   N1_R1C1   DC  Ipd_1
+d1 N1_R1C1 vdd dwell 1
+.model dwell d cj0=1e-14 is=1e-12 m=0.5 bv=40
+Cd1 N1_R1C1 VDD 30f
+.ends
+
+
+*MN1 DRAIN GATE SOURCE BULK NMOS WIDTH LENGTH 
+*MP1 SOURCE GATE DRAIN BULK PMOS WIDTH LENGTH 
+* 0.7 um < L < 2  um
+* 2.0 um < W < 10 um
+
+.param Ln = {0.7u}
+.param Lp = {0.7u}
+.param Wn = {2u}
+.param Wp = {2u}
+.param Cs = {3p}
+
+VDD vdd 0 dc 1.8
+PhotoDiode vdd dEXPOSE
+EXPOSE dEXPOSE gEXPOSE sEXPOSE 0 NMOS L=Ln W=Wn 
+
+[end]
