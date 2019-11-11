@@ -1,6 +1,6 @@
 [aimspice]
 [description]
-1720
+1635
 Analog circuit PROJECT(1 pixel)
 
 .param Wn={2u} 
@@ -19,13 +19,13 @@ V_ERASE gERASE 0 dc PULSE(1.8 0 10m TRF TRF PW T)
 V_NRE gNRE 0 dc PULSE(0 0 15m TRF TRF PW T)
 VDD vdd 0 dc 1.8v
 *-------------------------------------------------------
-*.plot tran(gEXPOSE) v(gERASE) v(N2)
-.plot tran(gNRE) v(OUT) v(N2) V(gEXPOSE)
+.plot tran(gEXPOSE) v(gERASE) v(N2)
+*.plot tran(gNRE) v(OUT) v(N2) V(gEXPOSE)
 
-*X2 gEXPOSE gERASE vdd N2 del_1
+X2 gEXPOSE gERASE vdd N2 del_1
 *X3 N2 gNRE vdd OUT del_2
-X1 vdd gExpose gErase gNRE OUT N2 onePixel
-X4 vdd OUT del_3 
+*X1 vdd gExpose gErase gNRE OUT N2 onePixel
+*X4 vdd OUT del_3 
 
 *------------------------------------------------------
 .subckt  del_1 gEXPOSE gERASE vdd N2
@@ -51,7 +51,7 @@ MP4 N3 gNRE OUT1 vdd PMOS L=Lp W=Wp
 .subckt del_3 vdd OUT1
 MP5 OUT1 OUT1 vdd vdd PMOS W=Wp L=Lp
 CC1 OUT1 0 cc1
-.ends 
+.ends  
 
 *------------------------------------------------------
 .subckt PhotoDiode  VDD N1_R1C1 
@@ -61,10 +61,8 @@ d1 N1_R1C1 vdd dwell 1
 Cd1 N1_R1C1 VDD 30f
 .ends 
 
-
-.include C:\Users\haral\OneDrive\NTNU\IC\Project\p18_cmos_models_tt.inc
-.include C:\Users\haral\OneDrive\NTNU\IC\Project\p18_model_card.inc
-
+.include p18_model_card.inc
+.include p18_cmos_models.inc
 [tran]
 0.1m
 50m
@@ -72,5 +70,11 @@ X
 X
 0
 [ana]
-4 0
+4 1
+0
+1 1
+1 1 0 5
+2
+v(gexpose)
+v(gerase)
 [end]

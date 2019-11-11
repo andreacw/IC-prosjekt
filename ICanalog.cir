@@ -1,32 +1,54 @@
 [aimspice]
 [description]
-544
+853
 Analog part , IC prosjekt
 
-.include p18_cmos_models.inc
-.include p18_model_card.inc
+.param T= 10m
+.param PW = {T/2}
+.param TRF = {T/100}
+.param Ipd_1 = 200p
 
+V_expo expo 0 dc PULSE(1.8 0 5m TRF TRF PW T)
+V_erea erea 0 dc PULSE(1.8 0 10m TRF TRF PW T)
 VDD vdd 0 dc 1.8V
 
-.param EXPOSE = 0.5s
-.param EREASE = 0
-.param MP1W = 2.6u
-.param MP1L = 0.6u
-
-* Photo diode
-.subckt PhotoDiode  VDD N1_R1C1 
-I1_R1C1  VDD   N1_R1C1   DC  Ipd_1
-d1 N1_R1C1 vdd dwell 1
-.model dwell d cj0=1e-14 is=1e-12 m=0.5 bv=40
-Cd1 N1_R1C1 VDD 30f
-.ends
+.plot tran(expo) v(erea) v(N2)
+X2 expo erea vdd N2 til_M3
 
 * MN1 DRAIN GATE SOURCE BULK NMOS WIDTH LENGTH 
 * MP1 SOURCE GATE DRAIN BULK PMOS WIDTH LENGTH
 
-PD1 PhotoDiode VDD N1
-MP1 N2 EXPOSE N1 VSS PMOS MP1W MP1L 
+*------------ Expose circuit -----------
+.subckt  til_M3 expo erea vdd N2
+PD1 Vdd N1 PhotoDiode
+MN1 N1 expo N2 0 NMOS W=2.6U L=0.6U
+MN2 N2 erea 0 0 NMOS W=2.6U L=0.6U
+CS N2 0 0.6pf
+.ends
 
 
+*------------- Photo diode -------------
+.subckt PhotoDiode VDD N1_R1C1 
+I1_R1C1  VDD   N1_R1C1   DC  Ipd_1
+d1 N1_R1C1 vdd dwell 1
+.model dwell d cj0=1e-14 is=1e-12 m=0.5 bv=40
+Cd1 N1_R1C1 VDD 30f
+.ends 
 
+.include p18_model_card.inc
+.include p18_cmos_models.inc
+[dc]
+1
+VDD
+0
+3
+0.01
+[tran]
+0.1m
+50m
+X
+X
+0
+[ana]
+4 0
 [end]
