@@ -1,0 +1,13 @@
+124
+~M 0 "" 0 $root
+~A 1 "" 0 $root
+~M 1 "./../src/CTRL_ex_time.v" 2 CTRL_ex_time
+~A 1 "./../src/CTRL_ex_time.v" 2 CTRL_ex_time
+~M 3 "./../src/FSM_ex_control.v" 3 FSM_ex_control
+~A 1 "./../src/FSM_ex_control.v" 3 FSM_ex_control
+~M 1 "./../src/RE_control.v" 2 RE_control
+~A 1 "./../src/RE_control.v" 2 RE_control
+~M 3 "./../src/FSM_TB.v" 2 TestBench
+~A 1 "./../src/FSM_TB.v" 2 TestBench
+~M 1 "./../src/Timer_counter.v" 2 Timer_counter
+~A 1 "./../src/Timer_counter.v" 2 Timer_counter

@@ -1,0 +1,1 @@
+-o C:/My_Designs/IC_prosjekt/dig-camera/compile -lc C:/My_Designs/IC_prosjekt/library.cfg -fl C:/My_Designs/IC_prosjekt/dig-camera/projlib.cfg -pli "C:/Aldec/Active-HDL-10.3/bin/systf.dll" -epr C:/My_Designs/IC_prosjekt/dig-camera/compile/dig-camera.epr -O2 -sve -msg 5 -sv2k12 -work dig-camera C:/My_Designs/IC_prosjekt/dig-camera/src/FSM_TB.v 

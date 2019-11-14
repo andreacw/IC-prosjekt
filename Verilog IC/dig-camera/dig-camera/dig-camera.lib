@@ -1,0 +1,69 @@
+timestamp=1573685840612
+
+[~A]
+C:/My_Designs/IC_prosjekt/dig-camera/src/FSM_TB.v=0*215599*216200
+C:/My_Designs/IC_prosjekt/dig-camera/src/FSM_ex_control.v=0*212293*213254
+C:/My_Designs/IC_prosjekt/dig-camera/src/FSM_ex_control.v_Timer_counter.v_CTRL_ex_time.v_RE_control.v_FSM_TB.v=0*183052*184643
+LastVerilogToplevel=TestBench
+ModifyID=124
+Version=74
+c:/My_Designs/IC_prosjekt/dig-camera/src/CTRL_ex_time.v=0*47464*47975
+c:/My_Designs/IC_prosjekt/dig-camera/src/FSM_TB.v=0*142370*142971
+c:/My_Designs/IC_prosjekt/dig-camera/src/FSM_ex_control.v=0*180164*181045
+c:/My_Designs/IC_prosjekt/dig-camera/src/RE_control.v=0*133397*133970
+c:/My_Designs/IC_prosjekt/dig-camera/src/Timer_counter.v=0*178518*179126
+c:/My_Designs/IC_prosjekt/dig-camera/src/f1.v=0*391*908
+
+[$root]
+A/$root=22|||1*298791
+BinI32/$root=3*229284
+SLP=3*229388
+Version=10.3.3558.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|c73a565f2ade592f8ac1c68f484c9216c60b98a56338350265f711a409ac15b0
+
+[CTRL_ex_time]
+A/CTRL_ex_time=22|./../src/CTRL_ex_time.v|2|1*255078
+BinI32/CTRL_ex_time=3*197183
+R=./../src/CTRL_ex_time.v|2
+SLP=3*197801
+Version=10.3.3558.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|7523f09ed7c29459b2cd08fcd169a1088e55b9384e2152326c8be3af1787cf8bbfd8b542527170702da2bd8accf61fb5
+
+[FSM_ex_control]
+A/FSM_ex_control=22|./../src/FSM_ex_control.v|3|1*294664
+BinI32/FSM_ex_control=3*226076
+R=./../src/FSM_ex_control.v|3
+SLP=3*227032
+Version=10.3.3558.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|6eea25c209747ab0df3c54983bfd0d75f171980b030435a74b69e1dfef09fb69f06bf0e7789967cbbfedf38945598648
+
+[RE_control]
+A/RE_control=22|./../src/RE_control.v|2|1*256244
+BinI32/RE_control=3*198106
+R=./../src/RE_control.v|2
+SLP=3*198215
+Version=10.3.3558.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|9b761422299065dd92e611eee426aa0621e5290828705b63d9f5793947eba4e8c62f1e446e5664597ae78250a5005c54
+
+[TestBench]
+A/TestBench=22|./../src/FSM_TB.v|2|1*299165
+BinI32/TestBench=3*229456
+R=./../src/FSM_TB.v|2
+SLP=3*230206
+Version=10.3.3558.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|3293674a51ff251c6d88e97e1a314b6dccb06293bff00f9b1b6ee0e026c0dd39ee16384f66b6ee6ed66de5ded55db0ae
+
+[Timer_counter]
+A/Timer_counter=22|./../src/Timer_counter.v|2|1*253776
+BinI32/Timer_counter=3*196112
+R=./../src/Timer_counter.v|2
+SLP=3*196772
+Version=10.3.3558.6081  (Windows)|0000000b789cd3f53752d02d2e33ca3634020010aa02e5|aa52455802476909eaa1db5941f0ca8c94738f125c79b658c8fbb977669b1022cb1c6d7526b9158514b45f3c29705973
+
+[~MFT]
+0=6|0dig-camera.mgf|216200|146763
+1=4|1dig-camera.mgf|299165|292199
+3=8|3dig-camera.mgf|230206|225150
+
+[~U]
+$root=12|0*215253|
+CTRL_ex_time=12|0*182336|
+FSM_ex_control=12|0*211990||0x10
+RE_control=12|0*182561|
+TestBench=12|0*215435||0x10
+Timer_counter=12|0*182100|
