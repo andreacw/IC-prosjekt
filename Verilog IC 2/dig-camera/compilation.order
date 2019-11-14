@@ -1,0 +1,5 @@
+.\src\CTRL_ex_time.v
+.\src\FSM_ex_control.v
+.\src\Timer_counter.v
+.\src\RE_control.v
+.\src\FSM_TB.v
