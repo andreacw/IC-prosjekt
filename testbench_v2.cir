@@ -1,0 +1,94 @@
+[aimspice]
+[description]
+2346
+Analog Circuit
+
+!------------Sizes of transistors and capacitors------------
+.param Wmax={5.04u} !testvalue
+.param Lmax={1.08u} !testvalue
+.param Wmin={1.08u} !testvalue
+.param Lmin={0.36u} !testvalue
+.param Cs={50.3p} !testvalue
+
+
+.param VDD = 1.8 ! Supply voltage
+.param Ipd_1 = 50p ! Photodiode current, range [50 pA, 750 pA]
+.param EXPOSURETIME = 30m ! Exposure time, range [2 ms, 30 ms]
+.param TRF = {EXPOSURETIME/100} ! Risetime and falltime of EXPOSURE and ERASE signals
+.param PW = {EXPOSURETIME} ! Pulsewidth of EXPOSURE and ERASE signals
+.param PERIOD = {EXPOSURETIME*10} ! Period for testbench sources
+.param FS = 1k; ! Sampling clock frequency 
+.param CLK_PERIOD = {1/FS} ! Sampling clock period
+.param EXPOSE_DLY = {CLK_PERIOD} ! Delay for EXPOSE signal
+.param NRE_R1_DLY = {2*CLK_PERIOD + EXPOSURETIME} ! Delay for NRE_R1 signal
+.param NRE_R2_DLY = {4*CLK_PERIOD + EXPOSURETIME} ! Delay for NRE_R2 signal
+.param ERASE_DLY = {6*CLK_PERIOD + EXPOSURETIME} ! Delay for ERASE signal
+
+VDD VDD 0 dc VDD
+
+
+VEXPOSE EXPOSE 0 dc 0 pulse(0 VDD EXPOSE_DLY TRF TRF EXPOSURETIME PERIOD)
+VERASE ERASE 0 dc 0 pulse(0 VDD ERASE_DLY TRF TRF CLK_PERIOD PERIOD)
+VNRE_R1 NRE_R1 0 dc 0 pulse(VDD 0 NRE_R1_DLY TRF TRF CLK_PERIOD PERIOD)
+VNRE_R2 NRE_R2 0 dc 0  pulse(VDD 0 NRE_R2_DLY TRF TRF CLK_PERIOD PERIOD)
+
+
+XPIXEL11 VDD EXPOSE ERASE NRE_R1 OUT1 PIXEL
+XPIXEL12 VDD EXPOSE ERASE NRE_R1 OUT2 PIXEL
+XPIXEL21 VDD EXPOSE ERASE NRE_R2 OUT1 PIXEL
+XPIXEL22 VDD EXPOSE ERASE NRE_R2 OUT2 PIXEL
+XBUFFER1 OUT1 VDD BUFFER
+XBUFFER2 OUT2 VDD BUFFER
+
+
+.plot V(OUT1) V(OUT2)
+.plot V(EXPOSE) V(NRE_R1) V(NRE_R2) V(ERASE)
+.plot V(EXPOSE) V(NRE_R1) V(NRE_R2) V(ERASE) V(OUT1) V(OUT2)
+
+
+!---------------Photodiode
+.subckt PhotoDiode VDD N1_R1C1 
+I1_R1C1  VDD   N1_R1C1   DC  Ipd_1
+d1 N1_R1C1 vdd dwell 1
+.model dwell d cj0=1e-14 is=1e-12 m=0.5 bv=40
+Cd1 N1_R1C1 VDD 30f
+.ends
+
+!---------------One pixel circuit
+.subckt PIXEL VDD EXPOSE ERASE NRE OUT
+XPD1 VDD N1 PhotoDiode
+MN1 N1 EXPOSE N2 0 NMOS W=Wmax L=Lmin
+MN2 N2 ERASE 0 0 NMOS W=Wmin L=Lmax
+CS N2 0 Cs 
+MP3 0 N2 N3 VDD PMOS W=Wmax L=Lmin
+MP4 N3 NRE OUT VDD PMOS W=Wmin L=Lmax
+.ends
+
+!---------------Buffer
+.subckt BUFFER OUT VDD
+MC1 OUT OUT VDD VDD PMOS W=Wmin L=Lmax
+CC1 OUT 0 3p
+.ends
+
+.include p18_cmos_models.inc
+.include p18_model_card.inc
+
+[tran]
+0.1
+100m
+X
+X
+0
+[ana]
+4 1
+0
+1 1
+1 1 0 2
+6
+v(expose)
+v(erase)
+v(nre_r1)
+v(nre_r2)
+v(out1)
+v(out2)
+[end]
